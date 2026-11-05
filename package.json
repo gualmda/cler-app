@@ -1,0 +1,27 @@
+{
+  "name": "cler-landing-next",
+  "version": "1.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "node scripts/install-lucide-icons.mjs",
+    "icons:install": "node scripts/install-lucide-icons.mjs --force"
+  },
+  "dependencies": {
+    "next": "^16.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "aos": "^2.3.4",
+    "motion": "^12.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/aos": "^3.0.0"
+  }
+}
