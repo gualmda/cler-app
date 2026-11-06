@@ -1,5 +1,7 @@
+// Componente da seção original do CLER — conteúdo e imagens preservados.
 import { Tr } from "@/components/ui/Tr";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { AnimatedIcon } from "@/components/ui/AnimatedIcon";
 
 export function HealthProfile() {
   return (
@@ -9,35 +11,20 @@ export function HealthProfile() {
           <div className="eyebrow">
             <Tr id="m57" />
           </div>
-          <h2>
-            <Tr id="m58" />
-          </h2>
-          <p className="lead">
-            <Tr id="m59" />
-          </p>
+          <h2><Tr id="m58" /></h2>
+          <p className="lead"><Tr id="m59" /></p>
         </div>
         <div className="health-layout">
-          <div
-            className="health-shot health-shot-large"
-            data-aos="fade-up"
-            data-aos-duration="570"
-          >
+          <div className="health-shot health-shot-large" data-aos="fade-up" data-aos-duration="570">
             <SafeImage
               altKey="health"
               alt="Tela real do CLER com tipo sanguíneo, doenças preexistentes e alergias"
               decoding="async"
               loading="lazy"
-              src="/assets/perfil-saude-cler.jpg"
-            />
+              src="/assets/perfil-saude-cler.jpg" />
           </div>
-          <div
-            className="health-info"
-            data-aos="fade-up"
-            data-aos-duration="570"
-          >
-            <h3>
-              <Tr id="m60" />
-            </h3>
+          <div className="health-info" data-aos="fade-up" data-aos-duration="570">
+            <h3><Tr id="m60" /></h3>
             <ul className="health-list">
               <li>
                 <Tr id="m61" />

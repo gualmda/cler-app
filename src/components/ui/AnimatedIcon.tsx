@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * Cada ícone abaixo é um componente TSX do repositório OFICIAL
+ * lucide-animated.com, instalado em src/components/icons por `npm install`.
+ * As variantes e o controle das animações vêm de cada componente original;
+ * não usamos lucide-react nem substituímos o motion original por CSS.
+ */
 import { ArrowUpIcon } from "@/components/icons/arrow-up";
 import { BellIcon } from "@/components/icons/bell";
 import { ChartLineIcon } from "@/components/icons/chart-line";
@@ -42,11 +48,5 @@ export function AnimatedIcon({
   const Icon = icons[name];
   // Animar ao pairar sobre o ícone vem de cada componente; ao focar,
   // a interação visual de foco no elemento acionável continua disponível.
-  return (
-    <Icon
-      size={size}
-      className={`animated-icon lucide-icon ${className}`}
-      aria-hidden="true"
-    />
-  );
+  return <Icon size={size} className={`animated-icon lucide-icon ${className}`} aria-hidden="true" />;
 }

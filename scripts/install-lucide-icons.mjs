@@ -46,7 +46,7 @@ async function run() {
   for (const name of names) {
     const file = resolve(target, `${name}.tsx`);
     if (!force) {
-      try { await access(file); console.log(`Lucide Animated ✓ ${name} (já instalado)`); continue; } catch {}
+      try { await access(file); console.log(`Lucide Animated ✓ ${name} (já instalado)`); continue; } catch { }
     }
     let source = await getIcon(name);
     if (!source.includes('"use client"') && !source.includes("'use client'")) source = '"use client";\n' + source;

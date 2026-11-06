@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { Trajectory } from "@/components/sections/Trajectory";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Benefits } from "@/components/sections/Benefits";
 import { HealthProfile } from "@/components/sections/HealthProfile";
@@ -18,11 +19,14 @@ import { Tr } from "@/components/ui/Tr";
 
 export default function Home() {
   return <>
-    <a className="skip-link" href="#top"><Tr id="skip-link" /></a>
+    <a className="skip-link" href="#top">
+      <Tr id="skip-link" />
+    </a>
     <Header />
     <main id="top" tabIndex={-1}>
       <Hero />
       <About />
+      <Trajectory />
       <HowItWorks />
       <Benefits />
       <HealthProfile />

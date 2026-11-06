@@ -1,6 +1,6 @@
 # CLER — Landing Page | Next.js + TypeScript
 
-Projeto modularizado em 13 seções TSX, preservando o conteúdo, as imagens e a identidade do CLER, com AOS, modo escuro e traduções PT/EN.
+Projeto modularizado em 14 seções TSX, preservando o conteúdo, as imagens e a identidade do CLER, com AOS, modo escuro e traduções PT/EN.
 
 ## Instalação e execução
 
@@ -39,7 +39,7 @@ src/app/
   page.tsx                 # Ordem das seções
   globals.css              # Identidade original, temas e responsividade
 src/components/
-  sections/                # 13 seções independentes TSX
+  sections/                # 14 seções independentes TSX
   layout/                  # Header, Footer, modal legal
   ui/
     AnimatedIcon.tsx       # Mapeamento dos 12 ícones oficiais
@@ -79,7 +79,7 @@ O AOS é importado somente no cliente e inicializado **depois que as seções j�
 
 ## Inglês
 
-A versão EN possui todas as chaves presentes na versão PT, inclusive FAQ e termos. Foram corrigidos o texto auxiliar de idioma do rodapé, os textos alternativos das imagens, as descrições acessíveis do vídeo e da área de screenshots e os estilos de quebra de linha em títulos, botões, cards e conteúdo legal. O título da Hero agora usa `clamp()` responsivo para não partir palavras em duas linhas; o mesmo princípio foi aplicado a outros títulos. **As próprias capturas de tela do aplicativo, mantidas do projeto original, continuam mostrando a interface em português**, pois não foram modificadas.
+A versão EN possui todas as chaves presentes na versão PT, inclusive FAQ e termos. O controle de idioma do rodapé foi removido (o do header permanece). Foram corrigidos os textos alternativos das imagens, as descrições acessíveis do vídeo e da área de screenshots e os estilos de quebra de linha em títulos, botões, cards e conteúdo legal. O título da Hero agora usa `clamp()` responsivo para não partir palavras em duas linhas; o mesmo princípio foi aplicado a outros títulos. **As próprias capturas de tela do aplicativo, mantidas do projeto original, continuam mostrando a interface em português**, pois não foram modificadas.
 
 ## Observações
 
@@ -94,3 +94,35 @@ A versão EN possui todas as chaves presentes na versão PT, inclusive FAQ e ter
 - **Responsividade:** títulos não usam mais `overflow-wrap: break-word`; em vez disso, a fonte do título principal se adapta ao espaço disponível, mantendo `medicamentos` e `medication` inteiros. A largura das colunas também pode encolher sem causar overflow.
 - **Acessibilidade:** quando o dispositivo pede movimento reduzido, as animações permanecem desativadas, intencionalmente.
 - **Validação realizada:** arquivos TSX analisados quanto à sintaxe, CSS analisado por parser e layout isolado da Hero conferido em Chromium nas larguras 320, 375, 393, 760, 800, 1280 e 1440 px (textos PT/EN). O build completo e o comportamento do AOS no projeto real ainda exigem `npm install` e um teste local no navegador.
+
+
+## Navegação acessível entre seções
+
+A navbar usa `src/hooks/useSectionNavigation.ts`. Os links ainda preservam
+`#sobre`, `#trajetoria`, `#como-funciona`, `#para-quem`, `#parcerias` e `#faq` na URL para
+compartilhamento, mas a rolagem é calculada pelo JavaScript até o título da
+seção, descontando a altura real da barra fixa e adicionando 20 px de respiro.
+No celular, essa medida considera apenas a barra principal, mesmo quando o menu
+expansível estava aberto.
+
+O destaque acompanha a seção realmente alcançada por meio de um cálculo
+contínuo durante a rolagem e não depende de `IntersectionObserver`. O menu
+**Mais** recebe indicador ativo quando Trajetória, Parcerias ou FAQ estiverem ativos.
+A navegação respeita `prefers-reduced-motion`, mantém o foco acessível e
+suporta links diretos com hash, histórico e botões voltar/avançar do navegador.
+
+Para alterar o espaço entre o header e o começo da seção, modifique
+`CONTENT_GAP` em `useSectionNavigation.ts` (atualmente 20 px).
+
+
+## Seção Nossa trajetória (implementada a partir do PDF)
+
+A seção `#trajetoria` foi inserida entre **Sobre o CLER** e **Como funciona**, utilizando os marcos documentados no PDF de oito páginas. Conteúdo preservado: origem e incentivo de 2024; desenvolvimento e eventos de 2025; ampliação em 2026; implantação, produto e conclusão. As 17 fotos das páginas 2 a 6 foram extraídas para `public/assets/trajectory` e possuem textos alternativos em PT/EN.
+
+- `src/components/sections/Trajectory.tsx`: timeline semântica (`ol`), galerias com abertura da imagem original, próximos passos e conclusão, com efeitos AOS.
+- `src/components/sections/Trajectory.module.css`: paleta e espaçamentos da landing, tema claro/escuro e layout adaptável no mobile.
+- `src/lib/trajectory.ts`: dados e traduções completas da nova seção, integrados ao contexto de idioma existente.
+- Header desktop e mobile: o link Trajetória agora faz rolagem real para a seção e participa do indicador de seção ativa.
+- Footer: link Trajetória ativo e **botão de trocar idioma removido**. A troca PT/EN segue no header.
+
+**Verificações:** 33 arquivos TS/TSX analisados quanto à sintaxe; CSS verificado por parser; imagens e navegação conferidas. O build completo depende de instalar os pacotes npm e os ícones originais, processo que não foi concluído no ambiente de execução. Execute `npm install`, `npm run typecheck` e `npm run build` antes de publicar.
