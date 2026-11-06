@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { JourneyTeaser } from "@/components/sections/JourneyTeaser";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Benefits } from "@/components/sections/Benefits";
 import { HealthProfile } from "@/components/sections/HealthProfile";
@@ -26,6 +27,7 @@ export default function Home() {
       <main id="top" tabIndex={-1}>
         <Hero />
         <About />
+        <JourneyTeaser />
         <HowItWorks />
         <Benefits />
         <HealthProfile />
