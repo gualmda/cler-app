@@ -1,0 +1,183 @@
+/* CTA do CLER: visual inspirado na referência Framer, integrado à identidade atual. */
+.section {
+  padding: clamp(68px, 9vw, 124px) 0 clamp(72px, 8vw, 108px);
+  background: var(--paper);
+  overflow-x: clip;
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  align-items: center;
+  min-height: 440px;
+  border: 1px solid #e0cde8;
+  border-radius: 30px;
+  background: linear-gradient(120deg, #fff 10%, #fffcff 62%, #f9f0ff 100%);
+  box-shadow: 0 22px 65px rgba(42, 21, 54, .07);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  padding: clamp(30px, 4.25vw, 58px);
+}
+
+.eyebrow {
+  margin-bottom: 13px;
+}
+
+.heading {
+  font-size: clamp(2rem, 3.55vw, 3.4rem);
+  line-height: 1.11;
+  letter-spacing: -.043em;
+  max-width: 570px;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.description {
+  margin-top: 19px;
+  max-width: 560px;
+  font-size: clamp(.99rem, 1.2vw, 1.1rem);
+  line-height: 1.62;
+  color: #685b71;
+}
+
+.supportText {
+  margin-top: 10px;
+  color: #766881;
+  font-size: .92rem;
+}
+
+.storeArea { margin-top: 22px; }
+.storeStatus {
+  font-size: .86rem;
+  font-weight: 750;
+  color: #554261;
+  margin-bottom: 10px;
+}
+
+.storeBadges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Selos informativos, não falsos links de download. */
+.storeBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 45px;
+  padding: 7px 14px;
+  border-radius: 10px;
+  background: #18121d;
+  border: 1px solid #38323e;
+  box-shadow: 0 5px 13px rgba(17, 9, 22, .1);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.playIcon { width: 24px; height: 27px; flex: 0 0 auto; }
+.appleIcon { width: 25px; height: 25px; flex: 0 0 auto; }
+.badgeWordmark { display: flex; align-items: center; white-space: nowrap; }
+.badgeWordmark small { font-size: .95rem; font-weight: 800; letter-spacing: -.035em; }
+
+.actions {
+  margin-top: 23px;
+  gap: 11px;
+  position: relative;
+  z-index: 2;
+}
+
+.actions :global(.btn) {
+  min-height: 48px;
+  font-size: .9rem;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.25;
+}
+.actions :global(.btn:focus-visible) {
+  outline: 3px solid var(--purple);
+  outline-offset: 3px;
+}
+
+.visual {
+  position: relative;
+  height: 100%;
+  min-height: 420px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glow {
+  position: absolute;
+  inset: 15% 4% 4% -12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(160, 75, 241, .12) 0%, transparent 70%);
+}
+
+.phone {
+  position: absolute;
+  top: 50%;
+  right: -18%;
+  width: clamp(500px, 50vw, 800px);
+  height: auto;
+  max-width: none;
+  filter: drop-shadow(0 28px 18px rgba(34, 19, 38, .16));
+  transform: translateY(-50%) rotate(-34deg);
+  transform-origin: center;
+}
+
+:global(html[data-theme="dark"]) .section { background: var(--paper); }
+:global(html[data-theme="dark"]) .card {
+  background: linear-gradient(120deg, #2c1c36 0%, #31213d 60%, #272b3e 100%);
+  border-color: #60466e;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, .18);
+}
+:global(html[data-theme="dark"]) .heading { color: #fff; }
+:global(html[data-theme="dark"]) .description { color: #e4d8e9; }
+:global(html[data-theme="dark"]) .supportText { color: #d2c2db; }
+:global(html[data-theme="dark"]) .storeStatus { color: #efe4f4; }
+:global(html[data-theme="dark"]) .glow { background: radial-gradient(ellipse, rgba(175, 88, 228, .2), transparent 70%); }
+
+@media (max-width: 1050px) {
+  .card { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); }
+  .content { padding: 38px; }
+  .phone { width: clamp(390px, 55vw, 560px); right: -29%; }
+  .heading { font-size: clamp(2rem, 4.1vw, 2.9rem); }
+}
+
+@media (max-width: 760px) {
+  .section { padding: 58px 0 68px; }
+  .card { display: flex; flex-direction: column; align-items: stretch; border-radius: 26px; }
+  .content { padding: clamp(23px, 6vw, 35px); }
+  .heading { font-size: clamp(1.95rem, 7.5vw, 2.65rem); }
+  .storeBadge { min-height: 45px; padding-inline: 12px; }
+  .actions { display: flex; flex-direction: column; }
+  .actions :global(.btn) { width: 100%; }
+  .visual { min-height: clamp(295px, 85vw, 410px); height: auto; }
+  .phone { width: min(105%, 470px); right: -3%; top: 60%; }
+  .glow { inset: 0 2%; }
+}
+
+@media (max-width: 420px) {
+  .heading { font-size: clamp(1.7rem, 8vw, 2.15rem); }
+  .description { font-size: .97rem; }
+  .storeBadges { gap: 8px; }
+  .storeBadge { padding: 7px 11px; gap: 7px; }
+  .badgeWordmark small { font-size: .87rem; }
+  .playIcon, .appleIcon { width: 22px; }
+  .visual { min-height: 295px; }
+  .phone { right: -3%; width: 105%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone { filter: none; }
+}
