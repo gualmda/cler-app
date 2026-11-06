@@ -1,51 +1,58 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Tr } from "@/components/ui/Tr";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { LegalOpen } from "@/components/ui/LegalOpen";
 export function Footer() {
+  const isHome = usePathname() === "/";
+  const homeHref = (id: string) => isHome ? `#${id}` : `/#${id}`;
+
   return (<footer>
     <div className="container">
       <div className="foot-grid">
         <div className="foot-brand">
-          <a className="brand" href="#top">
+          <Link className="brand" href={isHome ? "#top" : "/"}>
             <SafeImage
               alt="CLER"
               className="brand-logo inline-style-10"
               decoding="async"
               loading="lazy"
               src="https://framerusercontent.com/images/0idPQ1yveGHqGoYDtDfWza5Ho.png?height=162&scale-down-to=512&width=730" />
-            <span className="brand-fallback inline-style-10">{"cler"}</span>
-          </a>
+            <span className="brand-fallback inline-style-10">cler</span>
+          </Link>
           <p><Tr id="m174" /></p>
         </div>
         <div>
           <h4><Tr id="m175" /></h4>
-          <a href="#como-funciona">
+          <Link href={homeHref("como-funciona")}>
             <Tr id="m176" />
-          </a>
-          <a href="#beneficios">
+          </Link>
+          <Link href={homeHref("beneficios")}>
             <Tr id="m177" />
-          </a>
-          <a href="#informacoes-saude">
+          </Link>
+          <Link href={homeHref("informacoes-saude")}>
             <Tr id="m178" />
-          </a>
-          <a href="#para-quem">
+          </Link>
+          <Link href={homeHref("para-quem")}>
             <Tr id="m179" />
-          </a>
-          <a href="#faq">
+          </Link>
+          <Link href={homeHref("faq")}>
             <Tr id="m180" />
-          </a>
+          </Link>
         </div>
         <div>
-          <h4>{"CLER"}</h4>
-          <a href="#sobre">
+          <h4>CLER</h4>
+          <Link href={homeHref("sobre")}>
             <Tr id="m182" />
-          </a>
-          <a href="#trajetoria">
+          </Link>
+          <Link href="/trajetoria">
             <Tr id="m183" />
-          </a>
-          <a href="#parcerias">
+          </Link>
+          <Link href={homeHref("parcerias")}>
             <Tr id="m184" />
-          </a>
+          </Link>
           <a href="mailto:contatocler.app@gmail.com">
             <Tr id="m185" />
           </a>

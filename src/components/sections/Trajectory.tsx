@@ -17,7 +17,7 @@ export function Trajectory() {
   const renderGroup = (group: JourneyGroup, year: string, index: number) => {
     const titleId = `trajetoria-${year}-${index + 1}`;
     return <div className={styles.group} key={titleId}>
-      <h4 id={titleId} className={styles.groupTitle}>{tr(group.heading)}</h4>
+      <h3 id={titleId} className={styles.groupTitle}>{tr(group.heading)}</h3>
       <ol className={styles.events} aria-labelledby={titleId}>
         {group.events.map((event, eventIndex) => <li key={`${titleId}-${eventIndex}`} className={styles.event}>
           {event.date
@@ -53,7 +53,7 @@ export function Trajectory() {
   const renderYear = (year: JourneyYear) => <article key={year.year} data-year={year.year}
     className={styles.yearCard} data-aos="fade-up" data-aos-duration="650">
     <div className={styles.yearLeft}>
-      <h3 className={styles.yearNumber}>{year.year}</h3>
+      <h2 className={styles.yearNumber}>{year.year}</h2>
       <span className={styles.yearDivider} aria-hidden="true" />
     </div>
     <div className={styles.yearRight}>
@@ -66,7 +66,7 @@ export function Trajectory() {
       <div className={styles.intro} data-aos="fade-up" data-aos-duration="650">
         <div>
           <span className="eyebrow">{label("eyebrow")}</span>
-          <h2 id="trajetoria-titulo" className={styles.title}>{label("years")}</h2>
+          <h1 id="trajetoria-titulo" className={styles.title}>{label("years")}</h1>
         </div>
         <p className={`lead ${styles.introLead}`}>{label("lead")}</p>
       </div>
@@ -75,22 +75,22 @@ export function Trajectory() {
       </div>
       <div className={styles.next} data-aos="fade-up" data-aos-duration="650">
         <span className="eyebrow">{label("nextEyebrow")}</span>
-        <h3 className={styles.nextTitle}>{label("next")}</h3>
+        <h2 className={styles.nextTitle}>{label("next")}</h2>
         <div className={styles.nextGrid}>
           <article className={styles.nextCard}>
             <span className={styles.nextIndex} aria-hidden="true">01</span>
-            <h4>{label("deploy")}</h4>
+            <h3>{label("deploy")}</h3>
             <p>{label("deployBody")}</p>
           </article>
           <article className={styles.nextCard}>
             <span className={styles.nextIndex} aria-hidden="true">02</span>
-            <h4>{label("product")}</h4>
+            <h3>{label("product")}</h3>
             <p>{label("productBody")}</p>
           </article>
         </div>
       </div>
       <aside className={styles.closing} data-aos="fade-up" data-aos-duration="650">
-        <h3>{label("closing")}</h3>
+        <h2>{label("closing")}</h2>
         <p>{label("closingBody")}</p>
         <strong>{label("tagline")}</strong>
       </aside>

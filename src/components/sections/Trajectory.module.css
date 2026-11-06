@@ -174,7 +174,6 @@
 
 .photoImg {
   object-fit: cover;
-  object-position: top;
   transition: transform .25s ease;
 }
 
@@ -273,7 +272,7 @@
 }
 
 :global(html[data-theme="dark"]) .section {
-  background: linear-gradient(180deg,var(--soft),var(--paper) 40%,var(--soft));
+  background: var(--paper);
 }
 
 :global(html[data-theme="dark"]) .yearCard {

@@ -1,6 +1,6 @@
 # CLER — Landing Page | Next.js + TypeScript
 
-Projeto modularizado em 14 seções TSX, preservando o conteúdo, as imagens e a identidade do CLER, com AOS, modo escuro e traduções PT/EN.
+Projeto modularizado em 13 seções TSX na landing page e uma página de trajetória sob demanda, preservando o conteúdo, as imagens e a identidade do CLER, com AOS, modo escuro e traduções PT/EN.
 
 ## Instalação e execução
 
@@ -126,3 +126,18 @@ A seção `#trajetoria` foi inserida entre **Sobre o CLER** e **Como funciona**,
 - Footer: link Trajetória ativo e **botão de trocar idioma removido**. A troca PT/EN segue no header.
 
 **Verificações:** 33 arquivos TS/TSX analisados quanto à sintaxe; CSS verificado por parser; imagens e navegação conferidas. O build completo depende de instalar os pacotes npm e os ícones originais, processo que não foi concluído no ambiente de execução. Execute `npm install`, `npm run typecheck` e `npm run build` antes de publicar.
+
+
+## Trajetória sob demanda (feedback do cliente)
+
+A linha do tempo completa deixou de ser exibida na landing page principal.
+O conteúdo e as 17 imagens continuam disponíveis em **`/trajetoria`**.
+
+- **Header:** "Mais → Trajetória" abre a página dedicada; o menu mobile tem link direto.
+- **Rodapé:** "Trajetória" também abre a página dedicada (sem adicionar controle de idioma no footer).
+- **Rota:** `src/app/trajetoria/page.tsx`, com navegação de retorno e breadcrumb traduzidos.
+- **Conteúdo:** `src/components/sections/Trajectory.tsx` e `src/lib/trajectory.ts` permanecem completos em PT/EN.
+- **Links para seções da landing:** de `/trajetoria`, os menus usam `/#...` para voltar à home e navegar até a seção certa.
+- **Destaque do header:** o menu "Mais" permanece ativo quando `/trajetoria` está aberto e o link da trajetória recebe `aria-current="page"`.
+
+A mudança reduz a extensão da página inicial, mas preserva o conteúdo histórico de forma voluntária e descobrível, conforme as heurísticas de controle do usuário, reconhecimento e simplicidade visual.

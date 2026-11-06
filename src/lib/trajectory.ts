@@ -5,6 +5,10 @@ export type JourneyPhoto = { file: string; alt: Pair; };
 export type JourneyGroup = { heading: Pair; events: TimelineEvent[]; photos: JourneyPhoto[]; };
 export type JourneyYear = { year: string; groups: JourneyGroup[]; };
 export const journeyLabels: Record<string, Pair> = {
+  breadcrumbHome: { pt: "Início", en: "Home" },
+  breadcrumbCurrent: { pt: "Nossa trajetória", en: "Our journey" },
+  breadcrumbNav: { pt: "Caminho de navegação", en: "Breadcrumb navigation" },
+  backToLanding: { pt: "Voltar à página inicial", en: "Back to home" },
   "eyebrow": {
     "pt": "Nossa trajetória",
     "en": "Our journey"

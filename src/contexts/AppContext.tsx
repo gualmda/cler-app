@@ -40,11 +40,18 @@ export function AppProvider({ children }: { children: ReactNode; }) {
   }, []);
   useEffect(() => {
     document.documentElement.lang = locale === "pt" ? "pt-BR" : "en";
-    document.title = locale === "pt" ? "CLER | Medicação e informações de saúde organizadas" : "CLER | Organized medication and health information";
+    const journeyPage = window.location.pathname === "/trajetoria";
+    document.title = journeyPage
+      ? (locale === "pt" ? "Nossa trajetória | CLER" : "Our journey | CLER")
+      : (locale === "pt" ? "CLER | Medicação e informações de saúde organizadas" : "CLER | Organized medication and health information");
     const description = document.querySelector('meta[name="description"]');
-    description?.setAttribute("content", locale === "pt"
-      ? "Organize medicações e mantenha informações importantes de saúde acessíveis em um só lugar com o CLER."
-      : "Organize medications and keep important health information at hand in one place with CLER.");
+    description?.setAttribute("content", journeyPage
+      ? (locale === "pt"
+        ? "Conheça os marcos, incentivos e próximos passos do CLER entre 2024 e 2026."
+        : "Explore CLER's milestones, support and next steps from 2024 through 2026.")
+      : (locale === "pt"
+        ? "Organize medicações e mantenha informações importantes de saúde acessíveis em um só lugar com o CLER."
+        : "Organize medications and keep important health information at hand in one place with CLER."));
   }, [locale]);
   useEffect(() => {
     document.documentElement.dataset.theme = theme;

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
 
 /** Ordem real das seções na página (não a ordem visual dos itens do menu). */
-const SECTION_IDS = ["sobre", "trajetoria", "como-funciona", "para-quem", "parcerias", "faq"] as const;
+const SECTION_IDS = ["sobre", "como-funciona", "para-quem", "parcerias", "faq"] as const;
 const CONTENT_GAP = 20;
 
 function getNavigationHeight(): number {
@@ -47,7 +47,7 @@ function reduceMotion(): boolean {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-export function useSectionNavigation() {
+export function useSectionNavigation(enabled = true) {
   const [active, setActive] = useState<string>("");
   const pendingTarget = useRef<string | null>(null);
   const scrollFrame = useRef<number>(0);
@@ -117,6 +117,8 @@ export function useSectionNavigation() {
   }, [navigateTo]);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const schedule = () => {
       if (scrollFrame.current) return;
       scrollFrame.current = requestAnimationFrame(() => {
@@ -195,7 +197,7 @@ export function useSectionNavigation() {
       window.removeEventListener("popstate", onHistoryNavigation);
       window.removeEventListener("hashchange", onHistoryNavigation);
     };
-  }, [navigateTo, updateActive]);
+  }, [enabled, navigateTo, updateActive]);
 
   return { active, onAnchorClick };
 }

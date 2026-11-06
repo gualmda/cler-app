@@ -3276,3 +3276,44 @@ html[data-theme="dark"] .mobile-menu > a[aria-current="location"] {
     transition: none;
   }
 }
+
+/* Trajetória é conteúdo de aprofundamento em /trajetoria, fora da landing. */
+.journey-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding-top: 32px;
+  padding-bottom: 0;
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.journey-breadcrumb a {
+  color: var(--ink2);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.journey-breadcrumb a:hover { color: var(--purple); }
+.journey-breadcrumb [aria-current="page"] { color: var(--ink); }
+.journey-return {
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 72px;
+}
+.journey-return .btn { gap: 12px; white-space: normal; text-align: center; }
+.navlinks .more-panel a[aria-current="page"],
+.mobile-menu > a[aria-current="page"] {
+  color: #7030c6;
+  background: var(--control-hover);
+  font-weight: 800;
+}
+.mobile-menu > a[aria-current="page"] { box-shadow: inset 3px 0 0 var(--purple); }
+html[data-theme="dark"] .navlinks .more-panel a[aria-current="page"],
+html[data-theme="dark"] .mobile-menu > a[aria-current="page"] { color: #dfb4ff; }
+@media (max-width: 760px) {
+  .journey-breadcrumb { padding-top: 20px; }
+  .journey-return { padding-bottom: 52px; }
+}
