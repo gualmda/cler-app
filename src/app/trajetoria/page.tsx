@@ -8,7 +8,7 @@ import { Tr } from "@/components/ui/Tr";
 
 export const metadata: Metadata = {
   title: "Nossa trajetória | CLER",
-  description: "Conheça a trajetória do CLER entre 2024 e 2026, nossos marcos, incentivos e próximos passos.",
+  description: "Conheça a trajetória do CLER desde 2024, nossos marcos, incentivos e próximos passos. Nossa história continua.",
 };
 
 export default function TrajectoryPage() {

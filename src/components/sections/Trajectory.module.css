@@ -20,6 +20,18 @@
   -webkit-text-fill-color: transparent;
 }
 
+.ongoing {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink2);
+  font-size: 0.83rem;
+  font-weight: 700;
+  background: var(--paper);
+}
+
 .introLead {
   max-width: 420px;
   padding-bottom: 6px;
@@ -174,8 +186,6 @@
 
 .photoImg {
   object-fit: cover;
-  object-position: top;
-  image-rendering: -webkit-optimize-contrast;
   transition: transform .25s ease;
 }
 
@@ -221,9 +231,9 @@
   margin-bottom: 12px;
 }
 
-.nextCard h4 {
+.nextCard h3 {
   font-size: 1.23rem;
-  font-family: Poppins,Inter,sans-serif;
+  font-family: var(--font-poppins), Poppins,Inter,sans-serif;
   font-weight: 800;
   color: var(--ink);
   margin: 0 0 10px;
@@ -244,7 +254,7 @@
   overflow: hidden;
 }
 
-.closing h3 {
+.closing h2 {
   max-width: 850px;
   font-size: clamp(1.6rem,3.5vw,3rem);
   line-height: 1.17;
@@ -265,7 +275,7 @@
 .closing strong {
   display: block;
   margin-top: 28px;
-  font-family: Poppins,Inter,sans-serif;
+  font-family: var(--font-poppins), Poppins,Inter,sans-serif;
   font-size: clamp(1rem,2.1vw,1.32rem);
   background: linear-gradient(90deg,#ff8fae,#dcb4ff);
   -webkit-background-clip: text;
@@ -327,7 +337,19 @@
     align-items: flex-start;
     gap: 13px;
   }
-  .introLead {
+  .ongoing {
+  display: inline-flex;
+  margin-top: 14px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink2);
+  font-size: 0.83rem;
+  font-weight: 700;
+  background: var(--paper);
+}
+
+.introLead {
     max-width: 650px;
   }
 }

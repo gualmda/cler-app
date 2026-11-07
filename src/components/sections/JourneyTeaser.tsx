@@ -40,7 +40,10 @@ export function JourneyTeaser() {
                   <AnimatedIcon name="chevron-down" size={20} />
                 </span>
               </Link>
-              <span className={styles.period}>{t("journeyTeaserPeriod")}</span>
+              <span className={styles.period}>
+                {t("journeyTeaserPeriod")}
+                <small className={styles.ongoing}>{t("journeyTeaserOngoing")}</small>
+              </span>
             </div>
           </div>
 
@@ -48,7 +51,7 @@ export function JourneyTeaser() {
             <div className={styles.glow} aria-hidden="true" />
             <figure className={`${styles.photo} ${styles.photoCare}`}>
               <Image
-                src="/assets/trajectory/p2-2.jpg"
+                src="/assets/trajectory/p2-2.webp"
                 alt={t("journeyTeaserCareAlt")}
                 fill
                 sizes="(max-width: 760px) 72vw, (max-width: 1180px) 36vw, 390px"
@@ -58,7 +61,7 @@ export function JourneyTeaser() {
             </figure>
             <figure className={`${styles.photo} ${styles.photoEvent}`}>
               <Image
-                src="/assets/trajectory/p5-3.jpg"
+                src="/assets/trajectory/p5-3.webp"
                 alt={t("journeyTeaserEventAlt")}
                 fill
                 sizes="(max-width: 760px) 44vw, (max-width: 1180px) 21vw, 230px"

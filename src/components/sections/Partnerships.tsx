@@ -17,7 +17,7 @@ export function Partnerships() {
             <p className="lead inline-style-6"><Tr id="m127" /></p>
             <div className="intel-claim">
               <Tr id="m128" />
-              <span><Tr id="m129" /></span>
+              <span> <Tr id="m129" /></span>
             </div>
           </div>
           <div className="intel-cards" data-aos="fade-up" data-aos-duration="570">

@@ -50,19 +50,29 @@ function reduceMotion(): boolean {
 export function useSectionNavigation(enabled = true) {
   const [active, setActive] = useState<string>("");
   const pendingTarget = useRef<string | null>(null);
+  // Medir layout somente em alterações de tamanho/conteúdo, não em cada scroll.
+  const landmarks = useRef<Array<{ id: string; top: number }>>([]);
+  const measuredNavHeight = useRef(76);
   const scrollFrame = useRef<number>(0);
   const settleTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const measureSections = useCallback(() => {
+    measuredNavHeight.current = getNavigationHeight();
+    landmarks.current = SECTION_IDS.flatMap((id) => {
+      const landmark = sectionLandmark(id);
+      return landmark ? [{ id, top: absoluteTop(landmark) }] : [];
+    });
+  }, []);
 
   const updateActive = useCallback(() => {
     // Durante a rolagem programática o indicador permanece no item clicado,
     // não passa por todos os links que ficam no caminho.
     if (pendingTarget.current) return;
 
-    const cursor = window.scrollY + getNavigationHeight() + CONTENT_GAP + 7;
+    const cursor = window.scrollY + measuredNavHeight.current + CONTENT_GAP + 7;
     let current = "";
-    for (const id of SECTION_IDS) {
-      const landmark = sectionLandmark(id);
-      if (landmark && absoluteTop(landmark) <= cursor) current = id;
+    for (const { id, top } of landmarks.current) {
+      if (top <= cursor) current = id;
     }
     setActive(current);
   }, []);
@@ -153,8 +163,13 @@ export function useSectionNavigation(enabled = true) {
       });
     };
 
+    const onLayoutChange = () => {
+      measureSections();
+      schedule();
+    };
+    measureSections();
     window.addEventListener("scroll", schedule, { passive: true });
-    window.addEventListener("resize", schedule, { passive: true });
+    window.addEventListener("resize", onLayoutChange, { passive: true });
     window.addEventListener("wheel", interrupt, { passive: true });
     window.addEventListener("touchstart", interrupt, { passive: true });
     window.addEventListener("keydown", onKeyDown);
@@ -162,7 +177,7 @@ export function useSectionNavigation(enabled = true) {
     window.addEventListener("hashchange", onHistoryNavigation);
 
     const main = document.querySelector("main");
-    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(schedule);
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(onLayoutChange);
     if (main && observer) observer.observe(main);
 
     // Links compartilhados, recarregamento em #faq etc.: alinhar depois do
@@ -177,6 +192,7 @@ export function useSectionNavigation(enabled = true) {
     if (initialId) {
       void document.fonts?.ready.then(() => {
         if (!canceled && location.hash === `#${encodeURIComponent(initialId)}`) {
+          measureSections();
           navigateTo(initialId, { history: false, focus: false, behavior: "instant" });
         }
       });
@@ -190,14 +206,14 @@ export function useSectionNavigation(enabled = true) {
       if (settleTimeout.current) clearTimeout(settleTimeout.current);
       observer?.disconnect();
       window.removeEventListener("scroll", schedule);
-      window.removeEventListener("resize", schedule);
+      window.removeEventListener("resize", onLayoutChange);
       window.removeEventListener("wheel", interrupt);
       window.removeEventListener("touchstart", interrupt);
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("popstate", onHistoryNavigation);
       window.removeEventListener("hashchange", onHistoryNavigation);
     };
-  }, [enabled, navigateTo, updateActive]);
+  }, [enabled, navigateTo, updateActive, measureSections]);
 
   return { active, onAnchorClick };
 }

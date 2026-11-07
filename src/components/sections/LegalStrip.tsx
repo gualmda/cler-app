@@ -8,7 +8,7 @@ export function LegalStrip() {
   return (
     <section className="legal-strip" id="seguranca">
       <div className="container legal-inline">
-        <h3 data-aos="fade-up" data-aos-duration="570"><Tr id="m122" /></h3>
+        <h2 data-aos="fade-up" data-aos-duration="570"><Tr id="m122" /></h2>
         <div className="actions" data-aos="fade-up" data-aos-duration="570">
           <LegalOpen section="terms" className="btn secondary legal-open"><Tr id="m123" /></LegalOpen>
           <LegalOpen section="privacy" className="btn secondary legal-open"><Tr id="m124" /></LegalOpen>

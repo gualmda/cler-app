@@ -67,6 +67,7 @@ export function Trajectory() {
         <div>
           <span className="eyebrow">{label("eyebrow")}</span>
           <h1 id="trajetoria-titulo" className={styles.title}>{label("years")}</h1>
+          <p className={styles.ongoing}>{label("ongoing")}</p>
         </div>
         <p className={`lead ${styles.introLead}`}>{label("lead")}</p>
       </div>

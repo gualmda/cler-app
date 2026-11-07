@@ -13,8 +13,7 @@ let aosPromise: Promise<AosApi> | null = null;
 
 function loadAos(): Promise<AosApi> {
   if (!aosPromise) {
-    aosPromise = import("aos").then((mod) => {
-      const AOS = ("default" in mod ? mod.default : mod) as AosApi;
+    aosPromise = import("aos").then((AOS) => {
       const root = document.documentElement;
       const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -64,35 +63,51 @@ export function AosInit() {
     let secondFrame = 0;
     let observer: ResizeObserver | undefined;
     let loadHandler: (() => void) | undefined;
+    let idleHandle: number | undefined;
+    let fallbackTimer: number | undefined;
 
-    loadAos().then((AOS) => {
-      if (!active || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const start = () => {
+      void loadAos()
+        .then((AOS) => {
+          if (!active || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      const refresh = () => {
-        cancelAnimationFrame(firstFrame);
-        cancelAnimationFrame(secondFrame);
-        firstFrame = requestAnimationFrame(() => {
-          secondFrame = requestAnimationFrame(() => AOS.refreshHard());
+          const refresh = () => {
+            cancelAnimationFrame(firstFrame);
+            cancelAnimationFrame(secondFrame);
+            firstFrame = requestAnimationFrame(() => {
+              secondFrame = requestAnimationFrame(() => AOS.refresh());
+            });
+          };
+
+          // Atualiza offsets após carregamento de fontes/imagens ou troca de idioma/tema.
+          refresh();
+          void document.fonts?.ready.then(() => { if (active) refresh(); });
+          if (document.readyState !== "complete") {
+            loadHandler = refresh;
+            window.addEventListener("load", loadHandler);
+          }
+          if (typeof ResizeObserver !== "undefined") {
+            observer = new ResizeObserver(refresh);
+            const main = document.querySelector("main");
+            if (main) observer.observe(main);
+          }
+        })
+        .catch((error: unknown) => {
+          console.error("Não foi possível iniciar o AOS:", error);
         });
-      };
+    };
 
-      // Atualiza offsets após fontes/imagens; também cobre troca PT/EN e tema.
-      refresh();
-      void document.fonts?.ready.then(() => { if (active) refresh(); });
-      if (document.readyState !== "complete") {
-        loadHandler = refresh;
-        window.addEventListener("load", loadHandler);
-      }
-      if (typeof ResizeObserver !== "undefined") {
-        observer = new ResizeObserver(refresh);
-        const main = document.querySelector("main");
-        if (main) observer.observe(main);
-      }
-    }).catch((error: unknown) => {
-      console.error("Não foi possível iniciar o AOS:", error);
-    });
+    // Defer animation-library JS until the browser is idle: reduce initial TBT.
+    // The content stays visible until AOS is armed, and the Hero has no AOS.
+    if (typeof window.requestIdleCallback === "function") {
+      idleHandle = window.requestIdleCallback(start, { timeout: 1500 });
+    } else {
+      fallbackTimer = window.setTimeout(start, 250);
+    }
 
     return () => {
+      if (idleHandle !== undefined) window.cancelIdleCallback(idleHandle);
+      if (fallbackTimer !== undefined) window.clearTimeout(fallbackTimer);
       active = false;
       cancelAnimationFrame(firstFrame);
       cancelAnimationFrame(secondFrame);
