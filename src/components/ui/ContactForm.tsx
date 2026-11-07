@@ -1,13 +1,14 @@
 "use client";
 import { useState, type FormEvent } from "react";
 import { useApp } from "@/contexts/AppContext";
+import { trackEvent } from "@/lib/analytics";
 import { Tr } from "@/components/ui/Tr";
 const placeholders = {
   pt: { name: "Seu nome", email: "seuemail@empresa.com", organization: "Nome da organização", country: "Seu país", message: "Conte brevemente como podemos conversar." },
   en: { name: "Your name", email: "you@company.com", organization: "Organization name", country: "Your country", message: "Tell us briefly how we can connect." },
 };
 export function ContactForm() {
-  const { locale } = useApp();
+  const { locale, openLegal } = useApp();
   const [draft, setDraft] = useState(false);
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,6 +27,7 @@ export function ContactForm() {
     ];
     const subject = en ? "Inquiry via the CLER website" : "Contato pelo site CLER";
     const mailto = `mailto:contatocler.app@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\r\n"))}`;
+    trackEvent("contact_draft_opened", { section: "partnerships" });
     setDraft(true);
     window.location.href = mailto;
   }
@@ -55,6 +57,17 @@ export function ContactForm() {
     <div className="full">
       <label htmlFor="message"><Tr id="m149" /></label>
       <textarea id="message" name="message" placeholder={placeholders[locale].message} />
+    </div>
+    <div className="cler-privacy-notice">
+      <input type="checkbox" id="contact-consent" name="contact-consent" value="yes" required />
+      <label htmlFor="contact-consent">
+        {locale === "pt"
+          ? "Li as informações de privacidade e autorizo o uso dos dados fornecidos para responder a este contato. O botão abrirá meu aplicativo de e-mail para revisão e envio. Não inclua informações médicas nesta mensagem. "
+          : "I have read the privacy information and agree to the use of my details to respond to this inquiry. The button opens my email application to review and send the message. Please do not include medical information. "}
+        <button type="button" onClick={() => openLegal("privacy")}>
+          {locale === "pt" ? "Ler Política de Privacidade" : "Read Privacy Policy"}
+        </button>
+      </label>
     </div>
     <div className="form-actions">
       <button type="submit" className="btn ghost">

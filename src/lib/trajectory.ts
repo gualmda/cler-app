@@ -14,8 +14,12 @@ export const journeyLabels: Record<string, Pair> = {
     "en": "Our journey"
   },
   "years": {
-    "pt": "2024 — 2026",
-    "en": "2024 — 2026"
+    "pt": "2024 — 2026…",
+    "en": "2024 — 2026…"
+  },
+  "ongoing": {
+    "pt": "Uma história em constante evolução",
+    "en": "A story that keeps evolving"
   },
   "lead": {
     "pt": "Marcos, incentivos e próximos passos de quem cuida de quem cuida.",
@@ -101,28 +105,28 @@ export const journeyYears: JourneyYear[] = [
         ],
         "photos": [
           {
-            "file": "/assets/trajectory/p2-1.jpg",
+            "file": "/assets/trajectory/p2-1.webp",
             "alt": {
               "pt": "Pessoa idosa utilizando o aplicativo CLER no celular.",
               "en": "Older adult using CLER on a phone."
             }
           },
           {
-            "file": "/assets/trajectory/p2-2.jpg",
+            "file": "/assets/trajectory/p2-2.webp",
             "alt": {
               "pt": "Mulher auxiliando pessoa idosa em uma rotina de cuidado.",
               "en": "Woman helping an older adult during care."
             }
           },
           {
-            "file": "/assets/trajectory/p2-3.jpg",
+            "file": "/assets/trajectory/p2-3.webp",
             "alt": {
               "pt": "Duas mulheres conversando durante um cuidado.",
               "en": "Two women talking during a caregiving routine."
             }
           },
           {
-            "file": "/assets/trajectory/p2-4.jpg",
+            "file": "/assets/trajectory/p2-4.webp",
             "alt": {
               "pt": "Mulheres consultando informações pelo celular.",
               "en": "Women looking at information on a phone."
@@ -176,21 +180,21 @@ export const journeyYears: JourneyYear[] = [
         ],
         "photos": [
           {
-            "file": "/assets/trajectory/p3-3.jpg",
+            "file": "/assets/trajectory/p3-3.webp",
             "alt": {
               "pt": "Aplicativo CLER aberto em um celular.",
               "en": "CLER app open on a phone."
             }
           },
           {
-            "file": "/assets/trajectory/p3-1.jpg",
+            "file": "/assets/trajectory/p3-1.webp",
             "alt": {
               "pt": "Palestra de inovação e economia criativa.",
               "en": "Innovation and creative economy presentation."
             }
           },
           {
-            "file": "/assets/trajectory/p3-2.jpg",
+            "file": "/assets/trajectory/p3-2.webp",
             "alt": {
               "pt": "Representantes em encontro relacionado ao CLER.",
               "en": "Representatives at a CLER-related meeting."
@@ -228,21 +232,21 @@ export const journeyYears: JourneyYear[] = [
         ],
         "photos": [
           {
-            "file": "/assets/trajectory/p4-1.jpg",
+            "file": "/assets/trajectory/p4-1.webp",
             "alt": {
               "pt": "Representante do CLER no Web Summit Lisboa.",
               "en": "CLER representative at Web Summit Lisbon."
             }
           },
           {
-            "file": "/assets/trajectory/p4-2.jpg",
+            "file": "/assets/trajectory/p4-2.webp",
             "alt": {
               "pt": "Apresentação sobre inovação em sala de aula.",
               "en": "Innovation presentation in a classroom."
             }
           },
           {
-            "file": "/assets/trajectory/p4-3.jpg",
+            "file": "/assets/trajectory/p4-3.webp",
             "alt": {
               "pt": "Mulheres com exemplar do livro Além do Lucro.",
               "en": "Women holding a copy of the book Além do Lucro."
@@ -296,28 +300,28 @@ export const journeyYears: JourneyYear[] = [
         ],
         "photos": [
           {
-            "file": "/assets/trajectory/p5-1.jpg",
+            "file": "/assets/trajectory/p5-1.webp",
             "alt": {
               "pt": "Apresentação do CLER em evento de inovação.",
               "en": "CLER presentation at an innovation event."
             }
           },
           {
-            "file": "/assets/trajectory/p5-2.jpg",
+            "file": "/assets/trajectory/p5-2.webp",
             "alt": {
               "pt": "Representante apresenta o CLER no palco.",
               "en": "Representative presenting CLER on stage."
             }
           },
           {
-            "file": "/assets/trajectory/p5-3.jpg",
+            "file": "/assets/trajectory/p5-3.webp",
             "alt": {
               "pt": "Equipe CLER em estande de evento.",
               "en": "CLER team at an event booth."
             }
           },
           {
-            "file": "/assets/trajectory/p5-4.jpg",
+            "file": "/assets/trajectory/p5-4.webp",
             "alt": {
               "pt": "Participante em frente à marca do Web Summit.",
               "en": "Attendee in front of the Web Summit branding."
@@ -355,21 +359,21 @@ export const journeyYears: JourneyYear[] = [
         ],
         "photos": [
           {
-            "file": "/assets/trajectory/p6-3.jpg",
+            "file": "/assets/trajectory/p6-3.webp",
             "alt": {
               "pt": "Apresentação do CLER em auditório.",
               "en": "CLER presentation in an auditorium."
             }
           },
           {
-            "file": "/assets/trajectory/p6-1.jpg",
+            "file": "/assets/trajectory/p6-1.webp",
             "alt": {
               "pt": "Participantes reunidos em evento institucional.",
               "en": "Attendees gathered at an institutional event."
             }
           },
           {
-            "file": "/assets/trajectory/p6-2.jpg",
+            "file": "/assets/trajectory/p6-2.webp",
             "alt": {
               "pt": "Representante CLER conversando com participantes.",
               "en": "CLER representative speaking with attendees."

@@ -1,6 +1,8 @@
 # CLER — Landing Page | Next.js + TypeScript
 
-Projeto modularizado em 13 seções TSX na landing page e uma página de trajetória sob demanda, preservando o conteúdo, as imagens e a identidade do CLER, com AOS, modo escuro e traduções PT/EN.
+Projeto modularizado com seções TSX na landing page e uma página de trajetória sob demanda, preservando o conteúdo, as imagens e a identidade do CLER, com AOS, modo escuro e traduções PT/EN.
+
+> **ATENÇÃO — migração para Web Summit:** veja [DEPLOY-WEBSUMMIT.md](DEPLOY-WEBSUMMIT.md) antes de executar/publicar. Os arquivos Framer originais não puderam ser baixados neste ambiente; use `npm run assets:sync` numa máquina com internet para gerar os 10 conjuntos de imagens WebP locais. O build bloqueia a publicação até isso estar concluído. GA4 é opcional e só é ativado por consentimento após configurar `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
 
 ## Instalação e execução
 
@@ -8,6 +10,7 @@ Requisito: Node.js 20.9+ e internet na primeira instalação.
 
 ```bash
 npm install
+npm run assets:sync
 npm run dev
 ```
 
@@ -39,7 +42,7 @@ src/app/
   page.tsx                 # Ordem das seções
   globals.css              # Identidade original, temas e responsividade
 src/components/
-  sections/                # 14 seções independentes TSX
+  sections/                # Seções independentes TSX + teaser da trajetória
   layout/                  # Header, Footer, modal legal
   ui/
     AnimatedIcon.tsx       # Mapeamento dos 12 ícones oficiais
@@ -99,7 +102,7 @@ A versão EN possui todas as chaves presentes na versão PT, inclusive FAQ e ter
 ## Navegação acessível entre seções
 
 A navbar usa `src/hooks/useSectionNavigation.ts`. Os links ainda preservam
-`#sobre`, `#trajetoria`, `#como-funciona`, `#para-quem`, `#parcerias` e `#faq` na URL para
+`#sobre`, `#como-funciona`, `#para-quem`, `#parcerias` e `#faq` na URL para
 compartilhamento, mas a rolagem é calculada pelo JavaScript até o título da
 seção, descontando a altura real da barra fixa e adicionando 20 px de respiro.
 No celular, essa medida considera apenas a barra principal, mesmo quando o menu
@@ -107,7 +110,7 @@ expansível estava aberto.
 
 O destaque acompanha a seção realmente alcançada por meio de um cálculo
 contínuo durante a rolagem e não depende de `IntersectionObserver`. O menu
-**Mais** recebe indicador ativo quando Trajetória, Parcerias ou FAQ estiverem ativos.
+**Mais** recebe indicador ativo quando a página Trajetória, Parcerias ou FAQ estiverem ativos.
 A navegação respeita `prefers-reduced-motion`, mantém o foco acessível e
 suporta links diretos com hash, histórico e botões voltar/avançar do navegador.
 
@@ -141,3 +144,53 @@ O conteúdo e as 17 imagens continuam disponíveis em **`/trajetoria`**.
 - **Destaque do header:** o menu "Mais" permanece ativo quando `/trajetoria` está aberto e o link da trajetória recebe `aria-current="page"`.
 
 A mudança reduz a extensão da página inicial, mas preserva o conteúdo histórico de forma voluntária e descobrível, conforme as heurísticas de controle do usuário, reconhecimento e simplicidade visual.
+
+
+## Card de convite à trajetória na página inicial
+
+A linha do tempo permanece exclusivamente em `/trajetoria`, mas a landing conta agora
+com um **card de convite** logo depois de “Sobre o CLER” e antes de “Como funciona”.
+
+- `src/components/sections/JourneyTeaser.tsx` — card semântico com link Next.js para `/trajetoria`, duas fotos reais existentes e ícone da coleção Lucide Animated.
+- `src/components/sections/JourneyTeaser.module.css` — aparência do card, responsive, gradiente da marca, cores com contraste adequado e suporte automático ao tema claro/escuro pela variável `--paper`.
+- `src/lib/translations.ts` — novos textos, CTA e descrições das imagens em PT/EN.
+- `src/app/page.tsx` — nova seção no lugar da antiga trajetória.
+
+O card não repete a cronologia completa nem ocupa a navegação principal.
+Usa `data-aos` no contêiner e mantém o conteúdo legível quando as animações são
+desativadas por preferência de movimento reduzido.
+
+**Verificações:** sintaxe dos arquivos alterados e chaves PT/EN; imagens locais
+confirmadas. Layout isolado conferido no Chromium em 320, 375, 768 e 1280 px,
+nos modos claro/escuro e em ambos os idiomas, sem overflow horizontal.
+A aplicação Next.js completa ainda precisa de `npm install` e teste do build local.
+
+
+### Rolagem entre páginas
+
+`src/components/ui/RouteScrollTop.tsx` é montado uma vez no `layout.tsx` e
+reposiciona a tela no topo quando o `pathname` muda (por exemplo, ao abrir
+`/trajetoria` ou voltar para `/`). O ajuste é instantâneo, independentemente
+do `scroll-behavior: smooth` global. A navegação entre seções da landing page
+(`#como-funciona`, `#faq` etc.) e os links que levam a uma seção específica
+continuam funcionando normalmente, sem serem redefinidos pelo componente.
+
+
+## Atualização — Seção "Comece a usar o CLER"
+- `src/components/sections/GetStarted.tsx`: bloco reorganizado com o mockup local do telefone, selos informativos das lojas e ambos os links originais do PWA.
+- `src/components/sections/GetStarted.module.css`: layout responsivo, contraste claro/escuro e composição do mockup com fundo transparente.
+- `public/assets/cler-app-phone.webp`: imagem do telefone enviada na conversa, convertida para transparente.
+- `src/lib/translations.ts`: novo aviso de disponibilidade futura traduzido para PT/EN.
+- **Nota:** os selos App Store e Google Play NÃO são botões de download porque as URLs das lojas não foram fornecidas. Os dois botões existentes continuam abrindo `https://pwa.cler.app/`.
+
+## Revisão de privacidade e desempenho (novembro/2026)
+
+- `scripts/sync-remote-assets.mjs`: migração para 10 conjuntos de imagens locais responsivas, executada uma única vez; depois faça commit do resultado.
+- `src/components/ui/PrivacyControls.tsx`: aceitação/recusa de analytics, com possibilidade de alteração.
+- `src/lib/analytics.ts`: GA4 após consentimento e medição de UTM/eventos sem transmitir dados do formulário.
+- `src/components/ui/ContactForm.tsx`: aviso de privacidade e checkbox de ciência obrigatório, rascunho de e-mail mantido.
+- `src/app/layout.tsx`: `next/font/google` gera arquivos de fontes servidos pelo próprio domínio durante a visita.
+- `src/components/sections/Benefits.tsx`: o print de 210×287 px não é ampliado artificialmente; necessário solicitar imagem original em alta resolução.
+- `src/lib/translations.ts`: contato público adicionado à cláusula legal no lugar do marcador incompleto, sem afirmar nomeação de DPO.
+
+**Importante:** revisão jurídica de RGPD/GDPR e configuração do GA4 ainda são decisões da empresa; estas mudanças técnicas não constituem parecer jurídico nem uma garantia de conformidade.

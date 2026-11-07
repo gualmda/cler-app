@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Tr } from "@/components/ui/Tr";
 import { SafeImage } from "@/components/ui/SafeImage";
+import { PrivacySettingsButton } from "@/components/ui/PrivacyControls";
 import { LegalOpen } from "@/components/ui/LegalOpen";
 export function Footer() {
   const isHome = usePathname() === "/";
@@ -19,13 +20,13 @@ export function Footer() {
               className="brand-logo inline-style-10"
               decoding="async"
               loading="lazy"
-              src="https://framerusercontent.com/images/0idPQ1yveGHqGoYDtDfWza5Ho.png?height=162&scale-down-to=512&width=730" />
+              src="/assets/brand-cler.webp" />
             <span className="brand-fallback inline-style-10">cler</span>
           </Link>
           <p><Tr id="m174" /></p>
         </div>
         <div>
-          <h4><Tr id="m175" /></h4>
+          <h2 className="footer-heading"><Tr id="m175" /></h2>
           <Link href={homeHref("como-funciona")}>
             <Tr id="m176" />
           </Link>
@@ -43,7 +44,7 @@ export function Footer() {
           </Link>
         </div>
         <div>
-          <h4>CLER</h4>
+          <h2 className="footer-heading">CLER</h2>
           <Link href={homeHref("sobre")}>
             <Tr id="m182" />
           </Link>
@@ -61,9 +62,10 @@ export function Footer() {
           </a>
         </div>
         <div>
-          <h4><Tr id="m187" /></h4>
+          <h2 className="footer-heading"><Tr id="m187" /></h2>
           <LegalOpen section="terms" className="legal-open inline-style-11"><Tr id="m188" /></LegalOpen>
           <LegalOpen section="privacy" className="legal-open inline-style-11"><Tr id="m189" /></LegalOpen>
+          <PrivacySettingsButton />
         </div>
       </div>
       <div className="copy">

@@ -30,7 +30,7 @@ export function About() {
               alt="Kycia Cordeiro, fundadora do CLER"
               decoding="async"
               loading="lazy"
-              src="https://framerusercontent.com/images/7DasQCpiJmn46tCAf9RVGUac8c.jpeg?height=853&width=1280" />
+              src="/assets/historia-cler.webp" />
             <span className="play al-icon-wrapper"><AnimatedIcon name="play" size={30} className="lucide-icon lucide-play" /></span>
             <span className="video-caption">
               <strong>{"Kycia Cordeiro"}</strong>

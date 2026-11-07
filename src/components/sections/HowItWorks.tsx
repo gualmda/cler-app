@@ -26,7 +26,7 @@ export function HowItWorks() {
               alt="Tela 1 de 4 do aplicativo CLER"
               decoding="async"
               loading="lazy"
-              src="https://framerusercontent.com/images/b04S0iPIKkACToSiZutrogWv6U.png?height=966&width=493" />
+              src="/assets/tela-1-cler.webp" />
           </div>
           <div className="phone-shot">
             <SafeImage
@@ -34,7 +34,7 @@ export function HowItWorks() {
               alt="Tela 2 de 4 do aplicativo CLER"
               decoding="async"
               loading="lazy"
-              src="https://framerusercontent.com/images/EnIJXMMjhBZrS30nOt61oe9MRo.png?height=966&width=493" />
+              src="/assets/tela-2-cler.webp" />
           </div>
           <div className="phone-shot">
             <SafeImage
@@ -42,7 +42,7 @@ export function HowItWorks() {
               alt="Tela 3 de 4 do aplicativo CLER"
               decoding="async"
               loading="lazy"
-              src="https://framerusercontent.com/images/DlFxdlIV6WdcUDgcQMEQND0Fq5I.png?height=966&width=493" />
+              src="/assets/tela-3-cler.webp" />
           </div>
           <div className="phone-shot">
             <SafeImage
@@ -50,7 +50,7 @@ export function HowItWorks() {
               alt="Tela 4 de 4 do aplicativo CLER"
               decoding="async"
               loading="lazy"
-              src="https://framerusercontent.com/images/vrkgeppEMKHXzy2TjRYfaOClo.png?height=966&width=493" />
+              src="/assets/tela-4-cler.webp" />
           </div>
         </div>
       </div>

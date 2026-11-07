@@ -24,7 +24,7 @@ export function Audience() {
                 alt="Pessoa cuidando da própria saúde"
                 decoding="async"
                 loading="lazy"
-                src="https://framerusercontent.com/images/QKNdmnpruOoCYV0dUl1h68Oi7A.png?height=1024&width=1536" />
+                src="/assets/auto-cuidado.webp" />
               <div aria-hidden="true" className="photo-fallback">
                 <Tr id="m81" />
               </div>
@@ -45,7 +45,7 @@ export function Audience() {
                 alt="Familiar acompanhando o cuidado de uma pessoa idosa"
                 decoding="async"
                 loading="lazy"
-                src="https://framerusercontent.com/images/Rr4xTf8Uen8XvDbkjAIYoZHZD0.png?height=1024&width=1536" />
+                src="/assets/familia-cuidado.webp" />
               <div aria-hidden="true" className="photo-fallback">
                 <Tr id="m86" />
               </div>
@@ -66,7 +66,7 @@ export function Audience() {
                 alt="Cuidadora profissional acompanhando uma pessoa idosa"
                 decoding="async"
                 loading="lazy"
-                src="https://images.unsplash.com/photo-1764006145420-df3006edf060?auto=format&fit=crop&fm=jpg&q=80&w=1600" />
+                src="/assets/cuidado-profissional.webp" />
               <div aria-hidden="true" className="photo-fallback">
                 <Tr id="m91" />
               </div>

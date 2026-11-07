@@ -127,7 +127,7 @@
   position: absolute;
   top: 50%;
   right: -18%;
-  width: clamp(500px, 50vw, 800px);
+  width: clamp(440px, 46vw, 620px);
   height: auto;
   max-width: none;
   filter: drop-shadow(0 28px 18px rgba(34, 19, 38, .16));

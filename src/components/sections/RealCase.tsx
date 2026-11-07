@@ -20,7 +20,7 @@ export function RealCase() {
             alt="Caso real comparando informações de medicamentos fornecidas manualmente e organizadas pelo CLER"
             decoding="async"
             loading="lazy"
-            src="/assets/comparativo-cler.png" />
+            src="/assets/comparativo-cler.webp" />
         </div>
         <div className="case-note centered">
           <Tr id="m72" />

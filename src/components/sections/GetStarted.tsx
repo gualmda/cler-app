@@ -62,9 +62,10 @@ export function GetStarted() {
             <div className={styles.glow} />
             <Image
               src="/assets/cler-app-phone.webp"
-              alt="Imagem do aplicativo CLER em um smartphone"
+              alt=""
               width={2048}
               height={1414}
+              sizes="(max-width: 760px) 100vw, (max-width: 1020px) 70vw, 610px"
               className={styles.phone}
             />
           </div>

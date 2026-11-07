@@ -67,6 +67,8 @@ export function Benefits() {
                   alt="Exemplo de relatório de medicações em uso gerado pelo CLER, com dados pessoais ocultados"
                   decoding="async"
                   loading="lazy"
+                  width={210}
+                  height={287}
                   src="/assets/relatorio-cler.png" />
               </div>
               <span className="report-caption"><Tr id="m56" /></span>

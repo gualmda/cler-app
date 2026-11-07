@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="container hero-grid">
-        <div data-aos="fade-up" data-aos-duration="570">
+        <div>
           <div className="eyebrow">
             <Tr id="m19" />
           </div>
@@ -22,13 +22,14 @@ export function Hero() {
             </a>
           </div>
         </div>
-        <div className="hero-visual" data-aos="fade-up" data-aos-duration="570">
+        <div className="hero-visual">
           <SafeImage
             altKey="heroAlt"
             alt="Telas do aplicativo CLER"
             className="hero-product"
             decoding="async"
             fetchPriority="high"
+            loading="eager"
             src="https://framerusercontent.com/images/wI77eRcUMB8iR9aevS9XFsbU28.png?height=1750&width=2532" />
           <div className="hero-badge">
             <Tr id="m24" />

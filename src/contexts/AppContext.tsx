@@ -47,8 +47,8 @@ export function AppProvider({ children }: { children: ReactNode; }) {
     const description = document.querySelector('meta[name="description"]');
     description?.setAttribute("content", journeyPage
       ? (locale === "pt"
-        ? "Conheça os marcos, incentivos e próximos passos do CLER entre 2024 e 2026."
-        : "Explore CLER's milestones, support and next steps from 2024 through 2026.")
+        ? "Conheça a história do CLER desde 2024: marcos, incentivos, próximos passos e uma trajetória que continua."
+        : "Explore CLER's journey since 2024: milestones, support, next steps and a story that continues.")
       : (locale === "pt"
         ? "Organize medicações e mantenha informações importantes de saúde acessíveis em um só lugar com o CLER."
         : "Organize medications and keep important health information at hand in one place with CLER."));
