@@ -1,0 +1,101 @@
+/* Capturas do aplicativo e textos editáveis/traduzíveis da seção Como funciona. */
+.screens {
+  align-items: start;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+}
+
+.screens .frame {
+  width: 100%;
+  aspect-ratio: 591 / 1280;
+  flex: none;
+  background: #fff;
+}
+
+.screens .image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.caption {
+  padding: 19px 3px 6px;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: var(--ink2);
+  font-size: clamp(0.94rem, 1.1vw, 1.13rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.description {
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+@media (min-width: 761px) and (max-width: 1050px) {
+  .screens.screens {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 24px;
+  }
+
+  .screen {
+    max-width: 340px;
+    margin-inline: auto;
+  }
+
+  .title {
+    font-size: 1.06rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .screens.screens {
+    grid-template-columns: repeat(4, 200px);
+    align-items: start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 18px;
+  }
+
+  .screen {
+    scroll-snap-align: start;
+  }
+
+  .caption {
+    padding: 16px 2px 8px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .screens.screens {
+    grid-template-columns: repeat(4, 185px);
+    gap: 16px;
+  }
+}
