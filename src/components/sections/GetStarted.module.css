@@ -61,33 +61,35 @@
   margin-bottom: 10px;
 }
 
-.storeBadges {
+.storeLayout {
   display: flex;
-  gap: 10px;
+  align-items: flex-start;
   flex-wrap: wrap;
-  align-items: center;
+  gap: 18px 24px;
 }
 
-/* Selos informativos, não falsos links de download. */
-.storeBadge {
-  display: inline-flex;
+.qrPanel {
+  width: 144px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 45px;
-  padding: 7px 14px;
-  border-radius: 10px;
-  background: #18121d;
-  border: 1px solid #38323e;
-  box-shadow: 0 5px 13px rgba(17, 9, 22, .1);
-  color: #fff;
-  flex-shrink: 0;
+  gap: 6px;
 }
 
-.playIcon { width: 24px; height: 27px; flex: 0 0 auto; }
-.appleIcon { width: 25px; height: 25px; flex: 0 0 auto; }
-.badgeWordmark { display: flex; align-items: center; white-space: nowrap; }
-.badgeWordmark small { font-size: .95rem; font-weight: 800; letter-spacing: -.035em; }
+.qrLink {
+  display: block;
+  width: 144px;
+  padding: 6px;
+  border: 1px solid #d9c8e2;
+  border-radius: 14px;
+  background: #fff;
+  line-height: 0;
+  transition: border-color 180ms ease;
+}
+.qrLink:hover { border-color: #7e2dd6; }
+.qrLink:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+.qrImage { display: block; width: 100%; height: auto; border-radius: 4px; image-rendering: crisp-edges; }
+.qrCaption { color: #5c4a65; font-size: .75rem; font-weight: 700; line-height: 1.35; text-align: center; }
 
 .actions {
   margin-top: 23px;
@@ -145,6 +147,7 @@
 :global(html[data-theme="dark"]) .description { color: #e4d8e9; }
 :global(html[data-theme="dark"]) .supportText { color: #d2c2db; }
 :global(html[data-theme="dark"]) .storeStatus { color: #efe4f4; }
+:global(html[data-theme="dark"]) .qrCaption { color: #e9d9ee; }
 :global(html[data-theme="dark"]) .glow { background: radial-gradient(ellipse, rgba(175, 88, 228, .2), transparent 70%); }
 
 @media (max-width: 1050px) {
@@ -159,7 +162,6 @@
   .card { display: flex; flex-direction: column; align-items: stretch; border-radius: 26px; }
   .content { padding: clamp(23px, 6vw, 35px); }
   .heading { font-size: clamp(1.95rem, 7.5vw, 2.65rem); }
-  .storeBadge { min-height: 45px; padding-inline: 12px; }
   .actions { display: flex; flex-direction: column; }
   .actions :global(.btn) { width: 100%; }
   .visual { min-height: clamp(295px, 85vw, 410px); height: auto; }
@@ -170,14 +172,13 @@
 @media (max-width: 420px) {
   .heading { font-size: clamp(1.7rem, 8vw, 2.15rem); }
   .description { font-size: .97rem; }
-  .storeBadges { gap: 8px; }
-  .storeBadge { padding: 7px 11px; gap: 7px; }
-  .badgeWordmark small { font-size: .87rem; }
-  .playIcon, .appleIcon { width: 22px; }
+  .storeLayout { gap: 16px; }
+  .qrPanel, .qrLink { width: 128px; }
   .visual { min-height: 295px; }
   .phone { right: -3%; width: 105%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .phone { filter: none; }
+  .qrLink { transition: none; }
 }

@@ -57,7 +57,7 @@ export function trackPageView(pathname: string) {
   });
 }
 
-export function trackEvent(name: "pwa_click" | "contact_draft_opened", extra: Record<string, string> = {}) {
+export function trackEvent(name: "pwa_click" | "contact_draft_opened" | "google_play_click", extra: Record<string, string> = {}) {
   if (typeof window === "undefined") return;
   const win = window as GAWindow;
   if (win.__clerAnalyticsEnabled && win.gtag) win.gtag("event", name, extra);
