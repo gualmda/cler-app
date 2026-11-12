@@ -1,0 +1,91 @@
+.stores {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-width: 0;
+}
+
+.badge {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  min-width: 162px;
+  min-height: 54px;
+  padding: 8px 13px;
+  border-radius: 12px;
+  background: #17131b;
+  border: 1px solid #3d3445;
+  color: #fff;
+  box-shadow: 0 7px 16px rgba(17, 9, 22, 0.13);
+}
+
+.googlePlay {
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  text-decoration: none;
+}
+
+.googlePlay:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 11px 22px rgba(17, 9, 22, 0.20);
+}
+
+.googlePlay:focus-visible {
+  outline: 3px solid #a25eff;
+  outline-offset: 4px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 1px;
+  line-height: 1.14;
+  white-space: nowrap;
+}
+
+.label small { color: #e8e3eb; font-size: 0.66rem; font-weight: 500; }
+.label strong { font-size: 1.06rem; font-weight: 800; letter-spacing: -0.02em; }
+.playIcon { width: 27px; height: 30px; flex-shrink: 0; }
+.appleIcon { width: 26px; height: 26px; flex-shrink: 0; }
+
+.appleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.appleUnavailable {
+  opacity: 0.77;
+  cursor: default;
+  box-shadow: none;
+}
+
+.soon {
+  align-self: center;
+  color: var(--muted, #716478);
+  font-size: 0.80rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+}
+
+:global(html[data-theme="dark"]) .soon { color: #e9d9ee; }
+
+@media (max-width: 430px) {
+  .stores { gap: 8px; }
+  .badge { min-width: 136px; padding: 7px 9px; gap: 7px; min-height: 50px; }
+  .label strong { font-size: 0.91rem; }
+  .playIcon, .appleIcon { width: 22px; height: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .googlePlay { transition: none; }
+  .googlePlay:hover { transform: none; }
+}
