@@ -23,14 +23,14 @@ const englishAlts: Record<string, string> = {
 export function SafeImage({ altKey, alt = "", onError, ...props }: Props) {
   const { locale } = useApp();
   const [failed, setFailed] = useState(false);
-  const localWebp = typeof props.src === "string" && /^\/assets\/(?:brand-cler|hero-cler|historia-cler|auto-cuidado|familia-cuidado|cuidado-profissional)\.webp$/.test(props.src);
+  const localWebp = typeof props.src === "string" && /^\/assets\/(?:brand-cler|hero-image|historia-cler|auto-cuidado|familia-cuidado|cuidado-profissional)\.webp$/.test(props.src);
   const stem = localWebp ? props.src!.slice(0, -5) : "";
   const srcSet = localWebp ? `${stem}-480.webp 480w, ${stem}-960.webp 960w, ${props.src} 1400w` : props.srcSet;
   const assetName = typeof props.src === "string" ? props.src.split("/").pop() : "";
   const sizes = localWebp
     ? assetName === "brand-cler.webp"
       ? "(max-width: 760px) 92px, 112px"
-      : assetName === "hero-cler.webp"
+      : assetName === "hero-image.png"
         ? "(max-width: 1020px) 94vw, 48vw"
         : assetName?.startsWith("tela-")
           ? "(max-width: 760px) 150px, 240px"
@@ -38,7 +38,7 @@ export function SafeImage({ altKey, alt = "", onError, ...props }: Props) {
     : props.sizes;
   const dimensions: Record<string, [number, number]> = {
     "brand-cler.webp": [730, 162],
-    "hero-cler.webp": [1188, 1242],
+    "hero-image.png": [1188, 1242],
     "historia-cler.webp": [1280, 853],
     "tela-1-cler.webp": [591, 1280],
     "tela-2-cler.webp": [591, 1280],

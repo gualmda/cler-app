@@ -1,6 +1,6 @@
 import { stat } from 'node:fs/promises';
 import { join } from 'node:path';
-const files = ["hero-cler.webp", "historia-cler.webp", "tela-1-cler.webp", "tela-2-cler.webp", "tela-3-cler.webp", "tela-4-cler.webp", "auto-cuidado.webp", "familia-cuidado.webp", "cuidado-profissional.webp", "brand-cler.webp"];
+const files = ["hero-image.png", "historia-cler.webp", "tela-1-cler.webp", "tela-2-cler.webp", "tela-3-cler.webp", "tela-4-cler.webp", "auto-cuidado.webp", "familia-cuidado.webp", "cuidado-profissional.webp", "brand-cler.webp"];
 const missing = [];
 const required = files.flatMap((f) => [f, f.replace(/\.webp$/, "-480.webp"), f.replace(/\.webp$/, "-960.webp")]);
 for (const file of required) {

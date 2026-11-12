@@ -7,7 +7,7 @@ import { mkdir, stat, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import sharp from 'sharp';
 const manifest = [
-  { filename: "hero-cler.webp", url: "https://framerusercontent.com/images/wI77eRcUMB8iR9aevS9XFsbU28.png?height=1750&width=2532", width: 1400 },
+  { filename: "hero-image.png", url: "https://framerusercontent.com/images/wI77eRcUMB8iR9aevS9XFsbU28.png?height=1750&width=2532", width: 1400 },
   { filename: "historia-cler.webp", url: "https://framerusercontent.com/images/7DasQCpiJmn46tCAf9RVGUac8c.jpeg?height=853&width=1280", width: 1400 },
   { filename: "tela-1-cler.webp", url: "https://framerusercontent.com/images/b04S0iPIKkACToSiZutrogWv6U.png?height=966&width=493", width: 900 },
   { filename: "tela-2-cler.webp", url: "https://framerusercontent.com/images/EnIJXMMjhBZrS30nOt61oe9MRo.png?height=966&width=493", width: 900 },

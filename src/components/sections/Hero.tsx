@@ -3,6 +3,7 @@ import { Tr } from "@/components/ui/Tr";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { StoreLinks } from "@/components/ui/StoreLinks";
 import styles from "./Hero.module.css";
+import HeroImage from "../../../public/assets/hero-image.png";
 
 export function Hero() {
   return (
@@ -55,7 +56,7 @@ export function Hero() {
             decoding="async"
             fetchPriority="high"
             loading="eager"
-            src="https://framerusercontent.com/images/wI77eRcUMB8iR9aevS9XFsbU28.png?height=1750&width=2532"
+            src={HeroImage.src}
           />
           <div className="hero-badge">
             <Tr id="m24" />
